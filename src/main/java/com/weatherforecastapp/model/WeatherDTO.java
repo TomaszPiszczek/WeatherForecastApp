@@ -13,7 +13,4 @@ public class WeatherDTO {
     private double temp;
     private double longitude;
     private double latitude;
-
-
-
 }

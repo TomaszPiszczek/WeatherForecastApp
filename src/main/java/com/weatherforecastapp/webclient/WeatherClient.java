@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class WeatherClient {
     private final String API_KEY = "d6885c9a1ed25d2d1080ae6c3e174aef";
-    private final String URL = "https://api.openweathermap.org/data/2.5/weather?q={city},uk&appid={API key}";
+    private final String URL = "https://api.openweathermap.org/data/2.5/weather?q={city},pl&appid={API key}";
     private final RestTemplate restTemplate = new RestTemplate();
 
 
