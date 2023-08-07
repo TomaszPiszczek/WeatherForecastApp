@@ -1,4 +1,4 @@
-package com.weatherforecastapp.webclient.openWeatherDto.common;
+package com.weatherforecastapp.webclient.openWeatherDto.currentWeather.common;
 
 import lombok.Getter;
 

@@ -1,6 +1,6 @@
-package com.weatherforecastapp.webclient.openWeatherDto;
+package com.weatherforecastapp.webclient.openWeatherDto.currentWeather;
 
-import com.weatherforecastapp.webclient.openWeatherDto.common.*;
+import com.weatherforecastapp.webclient.openWeatherDto.currentWeather.common.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -8,7 +8,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @Getter
 @ToString
-public class OpenWeatherDTO {
+public class OpenWeatherCurrentWeatherDTO {
     private Coord coord;
     private Weather[] weather;
     private String base;

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
     <title>Mapa Polski z przyciskami miast</title>
     <style>
@@ -9,6 +10,7 @@
             position: relative;
             display: inline-block;
         }
+
         .map-button {
             position: absolute;
             cursor: pointer;
@@ -29,85 +31,103 @@
             border: 1px solid #ccc;
             font-size: 12px;
         }
+
         #weather-table th, #weather-table td {
             padding: 5px;
             border: 1px solid #ccc;
         }
 
 
-
         #warsaw {
             top: 200px;
             left: 370px;
         }
+
         #krakow {
             top: 390px;
             left: 330px;
         }
+
         #wroclaw {
             top: 315px;
             left: 130px;
         }
+
         #gdansk {
             top: 48px;
             left: 245px;
         }
+
         #lodz {
             top: 255px;
             left: 300px;
         }
+
         #poznan {
             top: 200px;
             left: 140px;
         }
+
         #szczecin {
             top: 110px;
             left: 30px;
         }
+
         #bydgoszcz {
             top: 130px;
             left: 175px;
         }
+
         #bialystok {
             top: 120px;
             left: 480px;
         }
+
         #katowice {
             top: 370px;
             left: 240px;
         }
+
         #gdynia {
             top: 20px;
             left: 200px;
         }
+
         #zakopane {
             top: 440px;
             left: 330px;
         }
+
         #kielce {
             top: 325px;
             left: 370px;
         }
+
         #lublin {
             top: 295px;
             left: 470px;
         }
+
         #torun {
             top: 160px;
             left: 245px;
         }
+
         #kalisz {
             top: 265px;
             left: 200px;
         }
+
         #zielonagora {
             top: 250px;
             left: 50px;
         }
+
         #olsztyn {
             top: 90px;
             left: 360px;
         }
+
         #rzeszow {
             top: 393px;
             left: 440px;
@@ -123,73 +143,34 @@
 <body>
 
 <div id="map-container">
+
     <img src="/images/polandmap.png" alt="Map" width="600" height="500">
-    <!-- Przyciski z nazwami miast -->
-    <button class="map-button" id="warsaw" onclick="alert('Warszawa')">Warszawa</button>
-    <button class="map-button" id="krakow" onclick="alert('Kraków')">Kraków</button>
-    <button class="map-button" id="wroclaw" onclick="alert('Wrocław')">Wrocław</button>
-    <!-- Dodaj kolejne miasta i przyciski -->
-    <button class="map-button" id="gdansk" onclick="alert('Gdańsk')">Gdańsk</button>
-    <button class="map-button" id="lodz" onclick="alert('Łódź')">Łódź</button>
-    <button class="map-button" id="poznan" onclick="alert('Poznań')">Poznań</button>
-    <button class="map-button" id="szczecin" onclick="alert('Szczecin')">Szczecin</button>
-    <button class="map-button" id="bydgoszcz" onclick="alert('Bydgoszcz')">Bydgoszcz</button>
-    <button class="map-button" id="bialystok" onclick="alert('Białystok')">Białystok</button>
-    <button class="map-button" id="katowice" onclick="alert('Katowice')">Katowice</button>
-    <button class="map-button" id="gdynia" onclick="alert('Gdynia')">Gdynia</button>
-    <button class="map-button" id="zakopane" onclick="alert('Zakopane')">Zakopane</button>
-    <button class="map-button" id="lublin" onclick="alert('Lublin')">Lublin</button>
-    <button class="map-button" id="torun" onclick="alert('Toruń')">Toruń</button>
-    <button class="map-button" id="kalisz" onclick="alert('Kalisz')">Kalisz</button>
-    <button class="map-button" id="zielonagora" onclick="alert('Zielona Góra')">Zielona Góra</button>
-    <button class="map-button" id="olsztyn" onclick="alert('Olsztyn')">Olsztyn</button>
-    <button class="map-button" id="rzeszow" onclick="alert('Rzeszów')">Rzeszów</button>
-    <button class="map-button" id="opole"  onclick="alert('Opole')">Opole</button>
-    <button class="map-button" id="kielce"  onclick="alert('Kielce')">Kielce</button>
+
+
+    <form th:action="@{/cityWeather}" method="get">
+        <button class="map-button" name="cityName" value="Warszawa" id="warsaw">Warszawa</button>
+        <button class="map-button" name="cityName" value="Kraków" id="krakow">Kraków</button>
+        <button class="map-button" name="cityName" value="Wrocław" id="wroclaw">Wrocław</button>
+        <button class="map-button" name="cityName" value="Gdańsk" id="gdansk">Gdańsk</button>
+        <button class="map-button" name="cityName" value="Łódź" id="lodz">Łódź</button>
+        <button class="map-button" name="cityName" value="Poznań" id="poznan">Poznań</button>
+        <button class="map-button" name="cityName" value="Szczecin" id="szczecin">Szczecin</button>
+        <button class="map-button" name="cityName" value="Bydgoszcz" id="bydgoszcz">Bydgoszcz</button>
+        <button class="map-button" name="cityName" value="Białystok" id="bialystok">Białystok</button>
+        <button class="map-button" name="cityName" value="Katowice" id="katowice">Katowice</button>
+        <button class="map-button" name="cityName" value="Gdynia" id="gdynia">Gdynia</button>
+        <button class="map-button" name="cityName" value="Zakopane" id="zakopane">Zakopane</button>
+        <button class="map-button" name="cityName" value="Lublin" id="lublin">Lublin</button>
+        <button class="map-button" name="cityName" value="Toruń" id="torun">Toruń</button>
+        <button class="map-button" name="cityName" value="Kalisz" id="kalisz">Kalisz</button>
+        <button class="map-button" name="cityName" value="Zielona Góra" id="zielonagora">Zielona Góra</button>
+        <button class="map-button" name="cityName" value="Olsztyn" id="olsztyn">Olsztyn</button>
+        <button class="map-button" name="cityName" value="Rzeszów" id="rzeszow">Rzeszów</button>
+        <button class="map-button" name="cityName" value="Opole" id="opole">Opole</button>
+        <button class="map-button" name="cityName" value="Kielce" id="kielce">Kielce</button>
+    </form>
 </div>
 
-<!-- Weather data table -->
-<table id="weather-table">
-    <tr>
-        <th>Today (Thu)</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-    </tr>
-    <tr>
-        <td>HOTTEST</td>
-        <td>Rzeszów<br>high 25.4 °C</td>
-        <td>Warsaw<br>high 25.9 °C</td>
-        <td>Rzeszów<br>high 27.9 °C</td>
-        <td>Bialystok<br>high 30.3 °C</td>
-        <td>Szczecin<br>high 19.0 °C</td>
-    </tr>
-    <tr>
-        <td>COLDEST</td>
-        <td>Wałbrzych<br>low 15.2 °C</td>
-        <td>Bialystok<br>low 13.9 °C</td>
-        <td>Wałbrzych<br>low 13.2 °C</td>
-        <td>Wałbrzych<br>low 12.6 °C</td>
-        <td>Wałbrzych<br>low 10.9 °C</td>
-    </tr>
-    <tr>
-        <td>WETTEST</td>
-        <td>Gliwice<br>7.9 mm</td>
-        <td>Szczecin<br>4.9 mm</td>
-        <td>Tarnów<br>19.4 mm</td>
-        <td>Bielsko-Biala<br>49.5 mm</td>
-        <td>Elblag<br>13.0 mm</td>
-    </tr>
-    <tr>
-        <td>WINDIEST</td>
-        <td>Legnica<br>35 km/h</td>
-        <td>Gdansk<br>31 km/h</td>
-        <td>Częstochowa<br>24 km/h</td>
-        <td>Gdansk<br>30 km/h</td>
-        <td>Tarnów<br>33 km/h</td>
-    </tr>
-</table>
+
 </body>
 </html>
