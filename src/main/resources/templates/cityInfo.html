@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather Forecast</title>
+</head>
+<body>
+<a href="/currentWeather"> Go back</a>
+<h1>Weather Forecast</h1>
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Temperature</th>
+        <th>Description</th>
+        <th>Icon</th>
+    </tr>
+    <tr th:each="data, i : ${weatherData.date}">
+        <td th:text="${data}"></td>
+        <td th:text="${weatherData.temp[i.index]} + ' °C'"></td>
+        <td th:text="${weatherData.description[i.index]}"></td>
+    </tr>
+</table>
+</body>
+</html>

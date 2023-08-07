@@ -1,10 +1,12 @@
 package com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.common;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
 @Getter
+@Setter
 public class WeatherItem {
     private long dt;
     private MainData main;

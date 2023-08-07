@@ -1,6 +1,5 @@
 package com.weatherforecastapp.controller;
 
-import com.weatherforecastapp.model.forecastDTO.WeatherData;
 import com.weatherforecastapp.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +28,8 @@ public class WeatherController {
     public String getCityWeather(@RequestParam("cityName") String cityName, Model model ){
 
         log.info(weatherService.getWeatherForecast(cityName).toString());
-
-        return "home";
+        model.addAttribute("weatherData", weatherService.getWeatherForecast(cityName));
+        return "cityInfo";
     }
 
 
