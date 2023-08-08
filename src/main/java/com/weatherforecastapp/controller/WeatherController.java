@@ -1,5 +1,6 @@
 package com.weatherforecastapp.controller;
 
+import com.weatherforecastapp.model.WeatherForecastDTO;
 import com.weatherforecastapp.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpClientErrorException;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,10 +27,11 @@ public class WeatherController {
     }
 
     @GetMapping("/cityWeather")
-    public String getCityWeather(@RequestParam("cityName") String cityName, Model model ){
+    public String getCityWeather(@RequestParam("cityName") String cityName, Model model ) {
 
-        log.info(weatherService.getWeatherForecast(cityName).toString());
-        model.addAttribute("weatherData", weatherService.getWeatherForecast(cityName));
+
+            model.addAttribute("weatherData", weatherService.getWeatherForecast(cityName));
+
         return "cityInfo";
     }
 

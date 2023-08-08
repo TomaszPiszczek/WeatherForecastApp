@@ -23,14 +23,7 @@
         }
 
 
-        #weather-table {
-            position: absolute;
-            top: 50px; /* Adjust the positioning as needed */
-            right: 800px; /* Adjust the positioning as needed */
-            border-collapse: collapse;
-            border: 1px solid #ccc;
-            font-size: 12px;
-        }
+
 
         #weather-table th, #weather-table td {
             padding: 5px;
@@ -168,8 +161,19 @@
         <button class="map-button" name="cityName" value="Rzeszów" id="rzeszow">Rzeszów</button>
         <button class="map-button" name="cityName" value="Opole" id="opole">Opole</button>
         <button class="map-button" name="cityName" value="Kielce" id="kielce">Kielce</button>
+
+
+    </form>
+    <form th:action="@{/cityWeather}" method="get">
+        <label>
+            <p>Podaj inną miejscowość</p>
+            <input type="text" name="cityName">
+            <button type="submit">Sprawdź</button>
+        </label>
     </form>
 </div>
+
+
 
 
 </body>

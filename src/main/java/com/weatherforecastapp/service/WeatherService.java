@@ -1,7 +1,7 @@
 package com.weatherforecastapp.service;
 
 import com.weatherforecastapp.model.WeatherDTO;
-import com.weatherforecastapp.model.forecastDTO.WeatherForecastDTO;
+import com.weatherforecastapp.model.WeatherForecastDTO;
 import com.weatherforecastapp.webclient.WeatherClient;
 import com.weatherforecastapp.webclient.openWeatherDto.currentWeather.OpenWeatherCurrentWeatherDTO;
 import com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.OpenWeatherForecastDTO;
@@ -30,10 +30,14 @@ public class WeatherService {
                 .build();
     }
 
-
     public WeatherForecastDTO getWeatherForecast(String city){
+
         OpenWeatherForecastDTO openWeatherForecastDTO = weatherClient.getWeatherForecast(city);
 
+        return mapWeatherForecast(openWeatherForecastDTO);
+    }
+
+    private WeatherForecastDTO mapWeatherForecast(OpenWeatherForecastDTO openWeatherForecastDTO){
 
         List<String> date = openWeatherForecastDTO.getList()
                 .stream()
@@ -60,16 +64,12 @@ public class WeatherService {
                 .map(Weather::getIcon)
                 .toList();
 
-
-
-
         return WeatherForecastDTO.builder()
                 .date(date)
                 .temp(temp)
                 .icon(icon)
                 .description(description)
                 .build();
-
     }
 
 }

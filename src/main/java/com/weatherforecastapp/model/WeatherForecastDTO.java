@@ -1,4 +1,4 @@
-package com.weatherforecastapp.model.forecastDTO;
+package com.weatherforecastapp.model;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,22 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
 <head>
     <title>Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #fff;
+        }
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        .go-back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 20px 10px;
+            background-color: #f2f2f2;
+        }
+        .go-back-link:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-<a href="/currentWeather"> Go back</a>
+<a href="/currentWeather" class="go-back-link">Go back</a>
 <h1>Weather Forecast</h1>
-<table border="1">
+<table>
     <tr>
         <th>Date</th>
         <th>Temperature</th>
         <th>Description</th>
         <th>Icon</th>
     </tr>
-    <tr th:each="data, i : ${weatherData.date}">
+    <tr th:each="data, i : ${weatherData.date}" >
         <td th:text="${data}"></td>
         <td th:text="${weatherData.temp[i.index]} + ' °C'"></td>
         <td th:text="${weatherData.description[i.index]}"></td>
+        <td>
+            <img th:src="@{'https://openweathermap.org/img/wn/' + ${weatherData.icon[i.index]} + '@2x.png'}" alt="Weather Icon"/>
+        </td>
     </tr>
 </table>
 </body>
