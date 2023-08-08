@@ -164,11 +164,14 @@
 
 
     </form>
+    <div>
+        <p th:text="${alertMessage}" style="color: red; font-weight: bold;"></p>
+    </div>
     <form th:action="@{/cityWeather}" method="get">
         <label>
-            <p>Podaj inną miejscowość</p>
+            <p>Enter other  city name</p>
             <input type="text" name="cityName">
-            <button type="submit">Sprawdź</button>
+            <button type="submit">Check</button>
         </label>
     </form>
 </div>

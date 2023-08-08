@@ -1,10 +1,13 @@
 package com.weatherforecastapp.webclient;
 
 
+import com.weatherforecastapp.exception.CityNotFoundException;
 import com.weatherforecastapp.webclient.openWeatherDto.currentWeather.OpenWeatherCurrentWeatherDTO;
 import com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.OpenWeatherForecastDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -29,11 +32,17 @@ public class WeatherClient {
     }
 
     public OpenWeatherForecastDTO getWeatherForecast(String city) {
-        OpenWeatherForecastDTO openWeatherForecastDTO = restTemplate
-                .getForObject(URL, OpenWeatherForecastDTO.class,"forecast", city, API_KEY);
-        assert openWeatherForecastDTO != null;
 
-        return openWeatherForecastDTO;
+        try {
+            return restTemplate
+                    .getForObject(URL, OpenWeatherForecastDTO.class,"forecast", city, API_KEY);
+
+        } catch (HttpClientErrorException ex) {
+            if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
+                throw new CityNotFoundException(city,"/currentWeather");
+            }
+            throw ex;
+        }
 
     }
 
