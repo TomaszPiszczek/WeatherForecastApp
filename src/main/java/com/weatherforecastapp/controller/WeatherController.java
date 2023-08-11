@@ -34,6 +34,7 @@ public class WeatherController {
 
 
             model.addAttribute("weatherData", weatherService.getWeatherForecast(cityName));
+            model.addAttribute("city",cityName);
 
         return "cityInfo";
     }
