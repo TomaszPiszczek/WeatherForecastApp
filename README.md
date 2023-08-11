@@ -5,6 +5,7 @@ It allows users to view the current weather and a 5-day forecast for selected ci
 The application retrieves weather data from the OpenWeatherMap API 
 
 image1:
+
 ![image](https://github.com/TomaszPiszczek/WeatherForecastApp/assets/115466543/c6d60060-babc-4bd3-8f6e-1256a4a11474)
 
 
