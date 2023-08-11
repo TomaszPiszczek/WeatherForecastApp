@@ -12,7 +12,8 @@ image1:
 You can provide the city name or choose on the map.
 
 image2:
-![image](https://github.com/TomaszPiszczek/WeatherForecastApp/assets/115466543/18cf6f51-17a9-45c7-8471-2ca55400b3f2)
+![image](https://github.com/TomaszPiszczek/WeatherForecastApp/assets/115466543/2c46962c-919d-4675-bf8d-5e54f13088a2)
+
 
 
 Forecasted weather for chosen city.
