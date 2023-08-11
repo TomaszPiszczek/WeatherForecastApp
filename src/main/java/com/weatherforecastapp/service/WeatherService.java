@@ -1,9 +1,7 @@
 package com.weatherforecastapp.service;
 
-import com.weatherforecastapp.model.WeatherDTO;
 import com.weatherforecastapp.model.WeatherForecastDTO;
 import com.weatherforecastapp.webclient.WeatherClient;
-import com.weatherforecastapp.webclient.openWeatherDto.currentWeather.OpenWeatherCurrentWeatherDTO;
 import com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.OpenWeatherForecastDTO;
 import com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.common.MainData;
 import com.weatherforecastapp.webclient.openWeatherDto.weatherForecast.common.Weather;
@@ -20,15 +18,6 @@ public class WeatherService {
 
     private final WeatherClient weatherClient;
 
-
-    public WeatherDTO getWeatherDto(String city){
-        OpenWeatherCurrentWeatherDTO openWeatherCurrentWeatherDTO = weatherClient.getCurrentWeather(city);
-        return WeatherDTO.builder()
-                .temp(openWeatherCurrentWeatherDTO.getMain().getTemp())
-                .description(openWeatherCurrentWeatherDTO.getWeather()[0].getDescription())
-                .humidity(openWeatherCurrentWeatherDTO.getMain().getHumidity())
-                .build();
-    }
 
     public WeatherForecastDTO getWeatherForecast(String city){
 
