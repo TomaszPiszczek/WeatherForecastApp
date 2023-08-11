@@ -1,6 +1,6 @@
 
 Weather Forecast Web Application
-This web application provides weather forecasts for various cities in Poland. 
+This application provides weather forecasts for various cities in Poland. 
 It allows users to view the current weather and a 5-day forecast for selected cities.
 The application retrieves weather data from the OpenWeatherMap API 
 
